@@ -33,10 +33,18 @@ class Adapter(private val userList: ArrayList<RecipeCard>) :
             intent.putExtra("recipeName", userList[position].name)
             intent.putExtra("recipeCuisine", userList[position].cuisine)
             intent.putExtra("recipeTotalTime", userList[position].total_time_minutes)
-            // Add any other data you want to pass
+
+            // Add other data you want to pass
+            intent.putExtra("servings", userList[position].servings)
+            intent.putExtra("caloriesPerServing", userList[position].caloriesPerServing)
+            intent.putExtra("description", userList[position].description)
+            intent.putExtra("ingredients", userList[position].ingredients)
+            intent.putExtra("instructions", userList[position].instructions)
+
             holder.itemView.context.startActivity(intent)
         }
     }
+
 
     override fun getItemCount(): Int {
         return userList.size

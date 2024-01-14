@@ -1,4 +1,14 @@
 package com.example.recipe_app
 
-data class RecipeCard(var name: String? = null, var cuisine: String? = null, var total_time_minutes: String? = null)
+data class RecipeCard(
+    val name: String = "",
+    val cuisine: String = "",
+    val total_time_minutes: String = "",
+    val servings: String = "",
+    val caloriesPerServing: String = "",
+    val description: String = "",
+    val ingredients: String = "",
+    val instructions: String = ""
+)
+
 
