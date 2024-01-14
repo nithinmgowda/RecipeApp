@@ -1,37 +1,44 @@
 package com.example.recipe_app
-
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.firestore
+import com.google.firebase.firestore.QueryDocumentSnapshot
 
 class SearchPage : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var userList: ArrayList<RecipeCard>
-    private var db = Firebase.firestore
+    private lateinit var adapter: Adapter
+    private val db = FirebaseFirestore.getInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_page)
-        recyclerView=findViewById(R.id.RecyclerView)
-        recyclerView.layoutManager=LinearLayoutManager(this)
-        userList= arrayListOf()
-        db= FirebaseFirestore.getInstance()
-        db.collection("RecipeData").get().addOnSuccessListener {
-           if(!it.isEmpty){
-               for(data in it.documents){
-                  val user:RecipeCard?=data.toObject(RecipeCard::class.java)
-                  if (user!=null){
-                      userList.add(user)
-                  }
-               }
-               recyclerView.adapter=Adapter(userList)
-           }
-        }.addOnFailureListener{
-            Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
-        }
+
+        recyclerView = findViewById(R.id.RecyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        userList = arrayListOf()
+        adapter = Adapter(userList)
+        recyclerView.adapter = adapter
+
+        // Fetch data from Firestore
+        fetchDataFromFirestore()
+    }
+
+    private fun fetchDataFromFirestore() {
+        db.collection("RecipeData").get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    val recipeCard = document.toObject(RecipeCard::class.java)
+                    userList.add(recipeCard)
+                }
+                // Notify the adapter that data has changed
+                adapter.notifyDataSetChanged()
+            }
+            .addOnFailureListener { exception ->
+                Toast.makeText(this, "Error getting data from Firestore: $exception", Toast.LENGTH_SHORT).show()
+            }
     }
 }

@@ -1,37 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- activity_list_item.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"> <!-- Add margin for spacing -->
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:text="Recipe Name"/>
 
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Recipe Name"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:padding="8dp" />
+    <TextView
+        android:id="@+id/cuisine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cuisine"/>
 
-        <TextView
-            android:id="@+id/cuisine"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cuisine"
-            android:textSize="16sp"
-            android:padding="8dp" />
-
-        <TextView
-            android:id="@+id/total_time_minutes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cooking Time: XX minutes"
-            android:textSize="16sp"
-            android:padding="8dp" />
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/total_time_minutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Time (minutes)"/>
+</LinearLayout>
