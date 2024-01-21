@@ -4,63 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/loginvector"
     tools:context=".login">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+    <LinearLayout
+        android:layout_width="402dp"
+        android:layout_height="620dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="52dp"
+        android:orientation="vertical"
+        android:padding="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="179dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:fontFamily="sans-serif-black"
+            android:text="LOGIN"
+            android:textColor="#F3EBEB"
+            android:textSize="45sp" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="200dp"
-                android:orientation="vertical"
-                android:padding="30dp">
+        <EditText
+            android:id="@+id/login_email"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:hint="Email"
+            android:padding="8dp"
+            android:background="@color/white"
 
-                <EditText
-                    android:id="@+id/login_email"
-                    android:layout_width="350dp"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="30dp"
-                    android:hint="Email"
-                    android:padding="8dp"
-
-                    />
-
-                <EditText
-                    android:id="@+id/login_password"
-                    android:layout_width="350dp"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="25dp"
-                    android:hint="Password"
-                    android:inputType="textPassword"
-                    android:padding="8dp" />
+            />
 
 
-                <Button
-                    android:id="@+id/loginbtn"
-                    android:layout_width="280dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="25dp"
-                    android:text="Login" />
+        <EditText
+            android:id="@+id/login_password"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="25dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="8dp" />
 
-                <TextView
-                    android:id="@+id/logintext"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="25dp"
-                    android:text="new user? Click to signup"
-                    android:textSize="17dp" />
+        <Button
+            android:id="@+id/loginbtn"
+            android:layout_width="218dp"
+            android:layout_height="62dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/rounded_button"
+            android:text="Login"
+            android:textColor="#131313" />
 
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+        <TextView
+            android:id="@+id/logintext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+
+            android:text="new user? Click to signup"
+            android:textSize="17dp" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

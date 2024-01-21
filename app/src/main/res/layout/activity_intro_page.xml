@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/intro_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#BF3131"
+    tools:context=".intro_page">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="415dp"
+        android:layout_height="286dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/intro_page" />
+
+    <TextView
+        android:id="@+id/introtxt1"
+        android:layout_width="334dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="sans-serif-black"
+        android:text="START YOUR COOKING JOURNEY"
+        android:textColor="#EBE2E2"
+        android:textColorHighlight="#FFFFFF"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.207"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="272dp"
+        android:layout_height="115dp"
+        android:layout_marginTop="32dp"
+        android:text="Learn best cooking recipes from all over the world and show case your cooking skills to your loved ones with the help of RICETTA"
+        android:textColor="#E7DEDE"
+        android:textSize="19sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/introtxt1" />
+
+    <Button
+        android:id="@+id/intrologin"
+        android:layout_width="192dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="sans-serif-black"
+        android:text="LOG IN"
+        android:textColor="#151414"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <Button
+        android:id="@+id/introsignin"
+        android:layout_width="192dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="136dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="sans-serif-black"
+        android:text="Signup"
+        android:textColor="#0C0B0B"
+
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

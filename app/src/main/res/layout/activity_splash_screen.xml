@@ -4,31 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#C3B8B6"
+    android:background="#BF3131"
     tools:context=".Splash_screen">
-
-  <ImageView
-      android:id="@+id/imageView4"
-      android:layout_width="159dp"
-      android:layout_height="175dp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.255"
-      app:srcCompat="@drawable/random_logo" />
 
   <TextView
       android:id="@+id/SplashScreenText"
-      android:layout_width="wrap_content"
-      android:layout_height="57dp"
-      android:layout_marginBottom="288dp"
-      android:text="Welcome,finding the best recipes for you!"
-      android:textSize="18sp"
+      android:layout_width="246dp"
+      android:layout_height="74dp"
+      android:text="RICETTA"
+      android:textColor="#EFEAEA"
+      android:textSize="57sp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.493"
+      app:layout_constraintHorizontal_bias="0.8"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/imageView4"
-      app:layout_constraintVertical_bias="0.481" />
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.467" />
+
+  <ImageView
+      android:id="@+id/imageView4"
+      android:layout_width="104dp"
+      android:layout_height="85dp"
+      android:layout_marginStart="16dp"
+      app:layout_constraintEnd_toStartOf="@+id/SplashScreenText"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/SplashScreenText"
+      app:srcCompat="@drawable/splashscreenicn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

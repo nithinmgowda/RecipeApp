@@ -11,7 +11,7 @@ class Splash_screen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
       Handler(Looper.getMainLooper()).postDelayed({
-          val toHome = Intent(this,MainActivity::class.java)
+          val toHome = Intent(this,intro_page::class.java)
           startActivity(toHome)
           finish()
       },3000)
