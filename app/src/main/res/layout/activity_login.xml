@@ -4,69 +4,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/loginvector"
+
     tools:context=".login">
 
-    <LinearLayout
-        android:layout_width="402dp"
-        android:layout_height="620dp"
+    <View
+        android:id="@+id/backgroundView"
+        android:layout_width="477dp"
+        android:layout_height="500dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="52dp"
-        android:orientation="vertical"
-        android:padding="30dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/vector"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="179dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-black"
-            android:text="LOGIN"
-            android:textColor="#F3EBEB"
-            android:textSize="45sp" />
-
-        <EditText
-            android:id="@+id/login_email"
-            android:layout_width="350dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="30dp"
-            android:hint="Email"
-            android:padding="8dp"
-            android:background="@color/white"
-
-            />
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="320dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="101dp"
+        android:text="LOGIN"
+        android:textColor="#F3EBEB"
+        android:textSize="48dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-        <EditText
-            android:id="@+id/login_password"
-            android:layout_width="350dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="25dp"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:padding="8dp" />
+    <EditText
+        android:id="@+id/login_email"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="207dp"
+        android:background="@drawable/edittext_background"
+        android:hint="Email"
+        android:padding="8dp"
+        android:textColorHint="#A9A9A9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/loginbtn"
-            android:layout_width="218dp"
-            android:layout_height="62dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/rounded_button"
-            android:text="Login"
-            android:textColor="#131313" />
+    <EditText
+        android:id="@+id/login_password"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="297dp"
+        android:background="@drawable/edittext_background"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="@+id/login_email"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/logintext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="25dp"
+    <Button
+        android:id="@+id/loginbtn"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="420dp"
+        android:background="@drawable/rounded_button"
+        android:text="Login"
+        android:textColor="#FDFCFC"
+        android:textColorLink="#DCCECE"
+        android:textSize="26dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            android:text="new user? Click to signup"
-            android:textSize="17dp" />
+    <TextView
+        android:id="@+id/logintext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
 
-    </LinearLayout>
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="576dp"
+        android:text="new user? Click to signup"
+        android:textSize="17dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

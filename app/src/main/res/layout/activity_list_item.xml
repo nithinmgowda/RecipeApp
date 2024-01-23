@@ -1,25 +1,36 @@
 <!-- activity_list_item.xml -->
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="12dp">
 
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Recipe Name"/>
+        android:text="Recipe Name"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="16dp"/>
+        />
 
     <TextView
         android:id="@+id/cuisine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cuisine"/>
+        android:text="Cuisine"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="16dp"/>
+        />
 
     <TextView
         android:id="@+id/total_time_minutes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total Time (minutes)"/>
+        android:text="Total Time (minutes)"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="16dp"/>
 </LinearLayout>
