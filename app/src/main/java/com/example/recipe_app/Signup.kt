@@ -38,7 +38,9 @@ class Signup : AppCompatActivity() {
                 }
             }
         }
-
+        binding.backbtn.setOnClickListener{
+            startActivity(Intent(this,intro_page::class.java))
+        }
         binding.loginredirect.setOnClickListener {
             val loginIntent = Intent(this, Login::class.java)
             startActivity(loginIntent)
@@ -75,4 +77,5 @@ class Signup : AppCompatActivity() {
         // For example, check if the password contains a combination of letters, numbers, and special characters
         return password.matches(Regex("^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@#\$%^&+=]).+\$"))
     }
+
 }

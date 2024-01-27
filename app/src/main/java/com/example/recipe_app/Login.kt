@@ -38,5 +38,8 @@ class Login : AppCompatActivity() {
          val sintent = Intent(this,Signup::class.java)
             startActivity(sintent)
         }
+        binding.backbtn.setOnClickListener{
+            startActivity(Intent(this,intro_page::class.java))
+        }
     }
 }
