@@ -1,9 +1,10 @@
 package com.example.recipe_app
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.Toast
-
 import com.example.recipe_app.databinding.ActivitySignupBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -45,6 +46,16 @@ class Signup : AppCompatActivity() {
             val loginIntent = Intent(this, Login::class.java)
             startActivity(loginIntent)
         }
+
+        // Set up the onClickListener for password visibility toggle
+        binding.viewPswd1.setOnClickListener {
+            togglePasswordVisibility(binding.signupPassword)
+        }
+
+        // Set up the onClickListener for confirm password visibility toggle
+        binding.viewPswd.setOnClickListener {
+            togglePasswordVisibility(binding.signupConfirmpassword)
+        }
     }
 
     private fun isInputValid(email: String, password: String, confirmPass: String): Boolean {
@@ -78,4 +89,16 @@ class Signup : AppCompatActivity() {
         return password.matches(Regex("^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@#\$%^&+=]).+\$"))
     }
 
+    private fun togglePasswordVisibility(passwordEditText: EditText) {
+        val isPasswordVisible =
+            passwordEditText.transformationMethod is android.text.method.PasswordTransformationMethod
+
+        // Toggle the password visibility
+        passwordEditText.transformationMethod =
+            if (isPasswordVisible) android.text.method.HideReturnsTransformationMethod.getInstance()
+            else android.text.method.PasswordTransformationMethod.getInstance()
+
+        // Move the cursor to the end of the text
+        passwordEditText.setSelection(passwordEditText.text.length)
+    }
 }
