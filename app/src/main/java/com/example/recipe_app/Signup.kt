@@ -1,22 +1,39 @@
 package com.example.recipe_app
-
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+
 import com.example.recipe_app.databinding.ActivitySignupBinding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 
 class Signup : AppCompatActivity() {
     private lateinit var binding: ActivitySignupBinding
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
         firebaseAuth = FirebaseAuth.getInstance()
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        googleSignInClient= GoogleSignIn.getClient(this,gso)
+        findViewById<ImageView>(R.id.google_btn).setOnClickListener{
+            signInGoogle()
+        }
 
         binding.signupbtn.setOnClickListener {
             val email = binding.signupEmail.text.toString()
@@ -46,15 +63,46 @@ class Signup : AppCompatActivity() {
             val loginIntent = Intent(this, Login::class.java)
             startActivity(loginIntent)
         }
+    }
+    private fun signInGoogle(){
+        val signInIntent = googleSignInClient.signInIntent
+        launcher.launch(signInIntent)
+    }
+private val launcher =registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+    result ->
+    if(result.resultCode== Activity.RESULT_OK){
 
-        // Set up the onClickListener for password visibility toggle
-        binding.viewPswd1.setOnClickListener {
-            togglePasswordVisibility(binding.signupPassword)
+        val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+        handleResults(task)
+    }
+}
+
+    private fun handleResults(task: Task<GoogleSignInAccount>) {
+        if(task.isSuccessful){
+            val account:GoogleSignInAccount? = task.result
+            if (account!=null){
+                updateUI(account)
+            }
+
+        }else{
+            Toast.makeText(this,task.exception.toString(),Toast.LENGTH_SHORT).show()
         }
 
-        // Set up the onClickListener for confirm password visibility toggle
-        binding.viewPswd.setOnClickListener {
-            togglePasswordVisibility(binding.signupConfirmpassword)
+
+    }
+
+    private fun updateUI(account: GoogleSignInAccount) {
+        val credential = GoogleAuthProvider.getCredential(account.idToken,null)
+        firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
+            if (it.isSuccessful){
+             val intent : Intent = Intent(this,MainActivity::class.java)
+                intent.putExtra("email",account.email)
+                intent.putExtra("name",account.displayName)
+                startActivity(intent)
+            }
+            else{
+                Toast.makeText(this,it.exception.toString(),Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -89,16 +137,4 @@ class Signup : AppCompatActivity() {
         return password.matches(Regex("^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@#\$%^&+=]).+\$"))
     }
 
-    private fun togglePasswordVisibility(passwordEditText: EditText) {
-        val isPasswordVisible =
-            passwordEditText.transformationMethod is android.text.method.PasswordTransformationMethod
-
-        // Toggle the password visibility
-        passwordEditText.transformationMethod =
-            if (isPasswordVisible) android.text.method.HideReturnsTransformationMethod.getInstance()
-            else android.text.method.PasswordTransformationMethod.getInstance()
-
-        // Move the cursor to the end of the text
-        passwordEditText.setSelection(passwordEditText.text.length)
-    }
 }

@@ -60,8 +60,8 @@
         android:layout_width="200dp"
         android:layout_height="59dp"
         android:layout_gravity="center"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="480dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="436dp"
         android:background="@drawable/rounded_button"
         android:text="signup"
         android:textColor="@color/white"
@@ -75,8 +75,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="604dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="644dp"
         android:text="alredy an user? Click to Login"
         android:textSize="21dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -126,6 +126,17 @@
         app:layout_constraintStart_toStartOf="@+id/signup_confirmpassword"
         app:layout_constraintTop_toTopOf="@+id/signup_confirmpassword"
         app:layout_constraintVertical_bias="0.48" />
+
+    <ImageView
+        android:id="@+id/google_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:src="@drawable/google"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.274"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signupbtn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
