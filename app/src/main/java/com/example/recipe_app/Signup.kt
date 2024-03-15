@@ -1,4 +1,5 @@
 package com.example.recipe_app
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -91,6 +92,7 @@ private val launcher =registerForActivityResult(ActivityResultContracts.StartAct
 
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun updateUI(account: GoogleSignInAccount) {
         val credential = GoogleAuthProvider.getCredential(account.idToken,null)
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
