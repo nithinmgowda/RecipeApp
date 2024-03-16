@@ -8,8 +8,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
-    val email = intent.getStringExtra("email")
-    val name = intent.getStringExtra("name")
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,10 +38,6 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         val currentUser = firebaseAuth.currentUser
 
-        if (currentUser == null) {
-            val intent = Intent(this, Login::class.java)
-            startActivity(intent)
-            finish()
-        }
+
     }
 }

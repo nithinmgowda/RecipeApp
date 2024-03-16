@@ -1,12 +1,15 @@
 package com.example.recipe_app
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import android.widget.EditText
+
 
 import com.example.recipe_app.databinding.ActivitySignupBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -35,6 +38,20 @@ class Signup : AppCompatActivity() {
         findViewById<ImageView>(R.id.google_btn).setOnClickListener{
             signInGoogle()
         }
+        binding.viewPswd1.setOnClickListener {
+            togglePasswordVisibility(binding.signupPassword)
+        }
+
+        binding.viewPswd.setOnClickListener {
+            togglePasswordVisibility(binding.signupConfirmpassword)
+        }
+
+
+
+        findViewById<ImageView>(R.id.google_btn).setOnClickListener{
+            signInGoogle()
+        }
+
 
         binding.signupbtn.setOnClickListener {
             val email = binding.signupEmail.text.toString()
@@ -65,18 +82,34 @@ class Signup : AppCompatActivity() {
             startActivity(loginIntent)
         }
     }
+
+    private fun togglePasswordVisibility(passwordEditText: EditText) {
+        val isPasswordVisible =
+            passwordEditText.transformationMethod is PasswordTransformationMethod
+
+        // Toggle the password visibility
+        passwordEditText.transformationMethod =
+            if (isPasswordVisible) HideReturnsTransformationMethod.getInstance()
+            else PasswordTransformationMethod.getInstance()
+
+        // Move the cursor to the end of the text
+        passwordEditText.setSelection(passwordEditText.text.length)
+    }
+
+
+
     private fun signInGoogle(){
         val signInIntent = googleSignInClient.signInIntent
         launcher.launch(signInIntent)
     }
-private val launcher =registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-    result ->
-    if(result.resultCode== Activity.RESULT_OK){
+    private val launcher =registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+            result ->
+        if(result.resultCode== Activity.RESULT_OK){
 
-        val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-        handleResults(task)
+            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+            handleResults(task)
+        }
     }
-}
 
     private fun handleResults(task: Task<GoogleSignInAccount>) {
         if(task.isSuccessful){
@@ -92,12 +125,11 @@ private val launcher =registerForActivityResult(ActivityResultContracts.StartAct
 
     }
 
-    @SuppressLint("SuspiciousIndentation")
     private fun updateUI(account: GoogleSignInAccount) {
         val credential = GoogleAuthProvider.getCredential(account.idToken,null)
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful){
-             val intent : Intent = Intent(this,MainActivity::class.java)
+                val intent : Intent = Intent(this,MainActivity::class.java)
                 intent.putExtra("email",account.email)
                 intent.putExtra("name",account.displayName)
                 startActivity(intent)
@@ -138,5 +170,6 @@ private val launcher =registerForActivityResult(ActivityResultContracts.StartAct
         // For example, check if the password contains a combination of letters, numbers, and special characters
         return password.matches(Regex("^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@#\$%^&+=]).+\$"))
     }
+
 
 }

@@ -46,10 +46,7 @@ class Login : AppCompatActivity() {
             }
         }
 
-        findViewById<ImageView>(R.id.login_google).setOnClickListener{
-       intent = Intent(this,Signup::class.java)
-            startActivity(intent)
-        }
+
         binding.logintext.setOnClickListener {
             val sintent = Intent(this, Signup::class.java)
             startActivity(sintent)
