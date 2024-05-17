@@ -16,6 +16,10 @@ class MainActivity : AppCompatActivity() {
 
         val logoutbtn = findViewById<Button>(R.id.Logoutbtn)
         val searchBtn = findViewById<Button>(R.id.searchbtn)
+        val breakfastbtn = findViewById<Button>(R.id.bf_btn)
+        val lunch = findViewById<Button>(R.id.Lunch_btn)
+        val dinner= findViewById<Button>(R.id.Dinner_btn)
+        val brunch = findViewById<Button>(R.id.Brunch_btn)
 
         // Initialize the FirebaseAuth object
         firebaseAuth = FirebaseAuth.getInstance()
@@ -30,6 +34,26 @@ class MainActivity : AppCompatActivity() {
         searchBtn.setOnClickListener {
             // Open the SearchPage activity when the search button is clicked
             val intent = Intent(this, SearchPage::class.java)
+            startActivity(intent)
+        }
+        breakfastbtn.setOnClickListener {
+            // Open the SearchPage activity when the search button is clicked
+            val intent = Intent(this, BreakfastPage::class.java)
+            startActivity(intent)
+        }
+        lunch.setOnClickListener {
+            // Open the SearchPage activity when the search button is clicked
+            val intent = Intent(this, LunchPage::class.java)
+            startActivity(intent)
+        }
+        dinner.setOnClickListener {
+            // Open the SearchPage activity when the search button is clicked
+            val intent = Intent(this, DinnerPage::class.java)
+            startActivity(intent)
+        }
+        brunch.setOnClickListener {
+            // Open the SearchPage activity when the search button is clicked
+            val intent = Intent(this, BrunchPage::class.java)
             startActivity(intent)
         }
     }

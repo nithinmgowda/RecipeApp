@@ -192,14 +192,55 @@
         android:id="@+id/searchbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="180dp"
-        android:text="search"
+        android:layout_marginBottom="88dp"
         android:background="@color/teal_200"
+        android:text="search"
         android:textColor="#131212"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.003"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/bf_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="308dp"
+        android:layout_marginBottom="176dp"
+        android:text="breakfast"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/Brunch_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:text="Brunch"
+        app:layout_constraintBottom_toTopOf="@+id/Lunch_btn"
+        app:layout_constraintEnd_toStartOf="@+id/Dinner_btn"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toEndOf="@+id/bf_btn" />
+
+    <Button
+        android:id="@+id/Dinner_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="40dp"
+        android:text="Dinner"
+        app:layout_constraintBottom_toTopOf="@+id/Lunch_btn"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/Lunch_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="96dp"
+        android:text="Lunch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/searchbtn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
