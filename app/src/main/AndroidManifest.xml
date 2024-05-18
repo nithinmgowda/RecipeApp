@@ -42,6 +42,21 @@
         <activity
             android:name=".Login"
             android:exported="false" />
+        <activity
+            android:name=".Breakfast"
+            android:exported="false"/>
+        <activity
+            android:name=".BreakfastDetailsActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".Brunch"
+            android:exported="false"/>
+        <activity
+            android:name=".Lunch"
+            android:exported="false"/>
+        <activity
+            android:name=".Dinner"
+            android:exported="false"/>
     </application>
 
 </manifest>
