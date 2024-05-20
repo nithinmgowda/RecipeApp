@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
+import com.example.recipe_app.R.id.ImageButtoon25
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
@@ -52,8 +53,28 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         val buttonindian = findViewById<ImageButton>(R.id.ImageButtoon21)
-        buttondinner.setOnClickListener{
+        buttonindian.setOnClickListener{
             val intent = Intent(this,IndianRecepies::class.java )
+            startActivity(intent)
+        }
+        val buttonitalian = findViewById<ImageButton>(R.id.ImageButtoon22)
+        buttonitalian.setOnClickListener{
+            val intent = Intent(this,ItalianRecepies::class.java )
+            startActivity(intent)
+        }
+        val buttonjapnese = findViewById<ImageButton>(R.id.ImageButtoon23)
+        buttonjapnese.setOnClickListener{
+            val intent = Intent(this,JapneseRecepies::class.java )
+            startActivity(intent)
+        }
+        val buttonmexican = findViewById<ImageButton>(R.id.ImageButtoon25)
+        buttonmexican.setOnClickListener{
+            val intent = Intent(this,MexicanRecepies::class.java )
+            startActivity(intent)
+        }
+        val buttonthai = findViewById<ImageButton>(R.id.ImageButtoon24)
+        buttonthai.setOnClickListener{
+            val intent = Intent(this,ThaiRecepies::class.java )
             startActivity(intent)
         }
 

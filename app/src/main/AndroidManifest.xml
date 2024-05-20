@@ -69,6 +69,21 @@
         <activity
             android:name=".Dinner"
             android:exported="false"/>
+        <activity
+            android:name=".IndianRecepies"
+            android:exported="false"/>
+        <activity
+            android:name=".ItalianRecepies"
+            android:exported="false"/>
+        <activity
+            android:name=".JapneseRecepies"
+            android:exported="false"/>
+        <activity
+            android:name=".MexicanRecepies"
+            android:exported="false"/>
+        <activity
+            android:name=".ThaiRecepies"
+            android:exported="false"/>
     </application>
 
 </manifest>
