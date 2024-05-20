@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.SearchView
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -16,13 +17,17 @@ private const val TAG = "Dinner"
 class Dinner : AppCompatActivity() {
 
     private lateinit var db: FirebaseFirestore
+    private lateinit var dinnerContainer: LinearLayout
+    private lateinit var searchView: SearchView
+    private var dinnerItems: MutableList<String> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dinner)
 
         db = Firebase.firestore
-
+        dinnerContainer = findViewById(R.id.dinnerContainer)
+        searchView = findViewById(R.id.searchView)
 
         db.collection("dinner")
             .get()
@@ -34,18 +39,29 @@ class Dinner : AppCompatActivity() {
                 }
                 for (document in documents) {
                     val dinnerName = document.id
-                    addBreakfastItem(dinnerName)
+                    dinnerItems.add(dinnerName)
+                    addDinnerItem(dinnerName)
                 }
             }
             .addOnFailureListener { exception ->
                 Log.e(TAG, "Error fetching dinner names: $exception")
                 Toast.makeText(this, "Failed to fetch dinner names", Toast.LENGTH_SHORT).show()
             }
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                filterDinnerItems(query)
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filterDinnerItems(newText)
+                return false
+            }
+        })
     }
 
-    private fun addBreakfastItem(dinnerName: String) {
-        val brunchContainer = findViewById<LinearLayout>(R.id.dinnerContainer)
-
+    private fun addDinnerItem(dinnerName: String) {
         val button = Button(this)
         button.text = dinnerName
         button.layoutParams = LinearLayout.LayoutParams(
@@ -59,8 +75,12 @@ class Dinner : AppCompatActivity() {
             startActivity(intent)
         }
 
-        brunchContainer.addView(button)
+        dinnerContainer.addView(button)
+    }
+
+    private fun filterDinnerItems(query: String?) {
+        dinnerContainer.removeAllViews()
+        val filteredItems = dinnerItems.filter { it.contains(query ?: "", ignoreCase = true) }
+        filteredItems.forEach { addDinnerItem(it) }
     }
 }
-
-
